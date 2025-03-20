@@ -121,6 +121,7 @@ class SimpleCNN(nn.Module):
 
     self.layers = nn.ModuleList()
 
+    # Block 1
     self.layers.append(nn.Conv2d(1, 36, 5))
     self.layers.append(nn.BatchNorm2d(36))
     # self.layers.append(nn.LayerNorm([36, 24, 24]))
@@ -132,6 +133,7 @@ class SimpleCNN(nn.Module):
     self.layers.append(nn.Conv2d(36, 36, 2, 2))
     # self.layers.append(nn.MaxPool2d(2))
 
+    # Block 2
     self.layers.append(nn.Conv2d(36, 64, 3))
     self.layers.append(nn.BatchNorm2d(64))
     # self.layers.append(nn.LayerNorm([64, 8, 8]))
@@ -143,6 +145,7 @@ class SimpleCNN(nn.Module):
     self.layers.append(nn.Conv2d(128, 128, 2, 2))
     # self.layers.append(nn.MaxPool2d(2))
 
+    # Block 3
     self.layers.append(nn.Conv2d(128, 256, 1))
     self.layers.append(nn.BatchNorm2d(256))
     # self.layers.append(nn.LayerNorm([256, 3, 3]))
@@ -167,17 +170,11 @@ def computeAccuracy(out, y):
   return torch.sum(torch.argmax(out, dim=1) == y) / y.size(dim=0)
 
 
-
-
-
 ############################################
 # Training loop
 ############################################
 
 def train(model, train_loader, test_loader):
-
-  
-
   model.to(device)
 
   optimizer = Adam(model.parameters(), lr=config["lr"], weight_decay=config["l2reg"])
