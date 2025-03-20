@@ -1,4 +1,4 @@
-# Neural Network Function Approximation
+# Neural Network 1D Function Approximation
 
 A simple PyTorch project for learning the basics of neural networks and dataloaders by approximating a complex non-linear function.
 
