@@ -1,6 +1,6 @@
 # Neural Network Function Approximation
 
-A simple PyTorch project for learning the basics of neural networks by approximating a complex non-linear functions.
+A simple PyTorch project for learning the basics of neural networks and dataloaders by approximating a complex non-linear function.
 
 <div align="center">
     <img src="assets/epochFinal.png" alt="Visualization of curve fit" width=80%>
@@ -65,10 +65,10 @@ python 1DFunctionPyTorch.py
 Edit the `main` function to experiment with:
 
 ```python
-w = 16                                                             # Width of hidden layers
-d = 8                                                              # Number of layers
+w = 16                                                                      # Width of hidden layers
+d = 8                                                                       # Number of layers
 layer_widths = [w] * d
-model = FeedForwardNetwork(1, layer_widths, 1, activation=nn.Mish) # Activation function
+model = FeedForwardNetwork(1, layer_widths, 1, activation=nn.Mish)          # Activation function
 ```
 
 Edit the `train` function to experiment with:
