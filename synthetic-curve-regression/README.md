@@ -48,19 +48,21 @@ The project serves as an educational tool for understanding:
 - **Parameter Counting**: Track the total number of parameters in your model
 - **Modern PyTorch Practices**: Uses PyTorch's built-in modules for data loading and network construction
 
-## Getting Started
+## Results
 
-### Prerequisites
+The optimal configuration achieved a loss < 0.005 with:
+- 8 layers of width 16 each (~2,000 parameters)
+- Mish activation function
+- 100 epochs of training
+- Exponential learning rate decay
 
-See `requirements.txt` in the parent directory.
+## Usage
 
-### Running the Code
+1. Clone the repository
+2. Install the required dependencies: `pip install -r ../requirements.txt`
+4. Run the training script: `python MNIST_CNN.py`
 
-```bash
-python 1DFunctionPyTorch.py
-```
-
-### Configuration Options
+### Configuration
 
 Edit the `main` function to experiment with:
 
@@ -76,13 +78,4 @@ Edit the `train` function to experiment with:
 ```python
 optimizer = torch.optim.Adam(model.parameters(), lr=0.004)                  # Optimizer
 scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)   # Learning rate scheduler
-
 ```
-
-## Best Results
-
-The optimal configuration achieved a loss < 0.005 with:
-- 8 layers of width 16 each (~2,000 parameters)
-- Mish activation function
-- 100 epochs of training
-- Exponential learning rate decay
