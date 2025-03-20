@@ -42,6 +42,7 @@ class FeedForwardNetwork(nn.Module):
       self.layers.append(activation())
       self.layers.append(nn.Linear(hidden_layer_widths[i - 1], hidden_layer_widths[i]))
 
+    self.layers.append(activation())
     self.layers.append(nn.Linear(hidden_layer_widths[-1], output_dim))
 
 
