@@ -29,20 +29,20 @@ class SimpleCurveData(torch.utils.data.Dataset):
 
 class FeedForwardNetwork(nn.Module):
 
-  def __init__(self, input_dim, layer_widths, output_dim, activation=nn.ReLU):
+  def __init__(self, input_dim, hidden_layer_widths, output_dim, activation=nn.ReLU):
     super().__init__()
-    self.layer_widths = layer_widths
-    assert(len(layer_widths) >= 1)
+    self.hidden_layer_widths = hidden_layer_widths
+    assert(len(hidden_layer_widths) >= 1)
 
     self.layers = nn.ModuleList()
-    self.layers.append(nn.Linear(input_dim, layer_widths[0]))
+    self.layers.append(nn.Linear(input_dim, hidden_layer_widths[0]))
     self.layers.append(activation())
 
-    for i in range(1, len(layer_widths)):
+    for i in range(1, len(hidden_layer_widths)):
       self.layers.append(activation())
-      self.layers.append(nn.Linear(layer_widths[i - 1], layer_widths[i]))
+      self.layers.append(nn.Linear(hidden_layer_widths[i - 1], hidden_layer_widths[i]))
 
-    self.layers.append(nn.Linear(layer_widths[-1], output_dim))
+    self.layers.append(nn.Linear(hidden_layer_widths[-1], output_dim))
 
 
   def forward(self, x):
@@ -76,7 +76,7 @@ def train(model, dataloader):
     # if i % 5 == 0:
     #   plotPredictions(model, dataloader, i + 1)
     
-  plotPredictions(model, dataloader, "Final")
+  plotPredictions(model, dataloader, "Final", True)
 
 
 def plotPredictions(model, dataloader, epoch, save_fig=False):
